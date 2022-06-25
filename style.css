@@ -1,24 +1,25 @@
 :root{
-    --header-bg-color: rgb(218, 238, 214);
-    --sidebar-bg-color: rgb(114, 114, 235);
-    --content-bg-color: rgb(145, 145, 211);
+    --header-bg-color: #D6DABE;
+    --sidebar-bg-color: #430E1C;
+    --content-bg-color: #E7CEB1;
 
-    --content-container-bg-color: rgb(196, 177, 177);
-    --accent-1: orange;
-    --accent-2: purple;
+    --content-container-bg-color: #D6DABE;
+    --accent-1: #EC9192;
+    --accent-2: #729EA1;
 
-    --button-color: pink;
+    --focus-shadow: 128,0,128, 0.72;
 }
 
 body{
     margin: 0;
     height: 100vh;
     width: 100vW;
+    font-family: 'Mali', cursive;
 
     resize: both;
 
     display: grid;
-    grid-template: clamp(160px, 20%, 200px) 1fr / clamp(200px, 20%, 300px) 1fr;
+    grid-template: clamp(160px, 20%, 200px) 1fr / clamp(225px, 20%, 300px) 1fr;
     grid-template-areas: 
         "sidebar header"
         "sidebar mainContent";
@@ -31,7 +32,6 @@ body{
     font-size: 20px;
     font-weight: bold;
     line-height: 24px;
-
 
     grid-area: sidebar;
 }
@@ -53,6 +53,7 @@ ul{
 }
 
 #sidebarHeader{
+    font-size: 25px;
 }
 
 #sidebarHeader p{
@@ -67,9 +68,19 @@ ul{
     padding-left: 5px;
 }
 
+#sidebarLinks{
+    position: sticky;
+    top: 20px;
+}
+
+#sidebarSettings{
+    position: sticky;
+    top: 80vh;
+}
+
 #header{
     background-color: var(--header-bg-color);
-    padding: 20px 50px;
+    padding: 10px 50px;
 
     grid-area: header;
 
@@ -86,11 +97,20 @@ ul{
 .headerSearch input{
     width: 400px;
     height: 25px;
+    padding: 5px 10px;
+    font-size: 18px;
+    box-shadow:  0px 15px 15px -11px rgba(0,0,0,0.72);
+
   
     background: linear-gradient(#fff, #fff) padding-box,
         linear-gradient(45deg, var(--accent-1), var(--accent-2)) border-box;
     border-radius: 50px;
     border: 4px solid transparent; 
+}
+
+.headerSearch input:focus{
+    outline: none;
+    box-shadow:  0px 15px 15px -11px rgba(var(--focus-shadow));
 }
 
 .headerNotif{
@@ -142,10 +162,12 @@ button{
     color: whitesmoke;
     font-weight: bolder;
     font-size: 16px;
+    box-shadow:  0px 15px 15px -11px rgba(0,0,0,0.72);
+    font-family: 'Mali', cursive;
 }
 
 button:hover{
-    box-shadow:  0px 15px 15px -11px rgba(0,0,0,0.72);
+    box-shadow:  0px 15px 15px -11px rgba(var(--focus-shadow));
 }
 
 #mainContent{
@@ -154,7 +176,7 @@ button:hover{
     padding: 20px;
 
     display: grid;
-    grid-template: 1fr 1fr / 3fr 1fr;
+    grid-template: 0.7fr 1fr / 3fr 1fr;
     grid-template-areas: 
         "projects announcements"
         "projects trending";
@@ -164,8 +186,6 @@ button:hover{
 #projects{
     grid-area: projects;
 }
-
-
 
 #projectsContainer{
     padding: 10px;
@@ -183,10 +203,15 @@ button:hover{
     padding-top: 0;
     border-left: 8px solid var(--accent-1);
     max-width: 400px;
+    box-shadow:  0px 15px 15px -11px rgba(0,0,0,0.72);
 }
 
 .projectIcons{
     text-align: end;
+}
+
+.projectIcons img{
+    padding: 0 5px;
 }
 
 #announcements{
@@ -199,6 +224,8 @@ button:hover{
     padding: 10px;
     border-left: 8px solid var(--accent-2);
     margin-right: 30px;
+    box-shadow:  0px 15px 15px -11px rgba(0,0,0,0.72);
+
 }
 
 #trending{
@@ -208,4 +235,9 @@ button:hover{
 .trendingProfiles{
     display: flex;
     align-items: center;
+    gap: 15px;
+}
+
+.trendingUsername{
+    font-weight: bold;
 }
