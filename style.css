@@ -2,6 +2,12 @@
     --header-bg-color: rgb(218, 238, 214);
     --sidebar-bg-color: rgb(114, 114, 235);
     --content-bg-color: rgb(145, 145, 211);
+
+    --content-container-bg-color: rgb(196, 177, 177);
+    --accent-1: orange;
+    --accent-2: purple;
+
+    --button-color: pink;
 }
 
 body{
@@ -9,8 +15,10 @@ body{
     height: 100vh;
     width: 100vW;
 
+    resize: both;
+
     display: grid;
-    grid-template: min(200px, 20%) 1fr / min(300px, 20%) 1fr;
+    grid-template: clamp(160px, 20%, 200px) 1fr / clamp(200px, 20%, 300px) 1fr;
     grid-template-areas: 
         "sidebar header"
         "sidebar mainContent";
@@ -18,13 +26,50 @@ body{
 
 #sidebar{
     background-color:  var(--sidebar-bg-color);
-    grid-area: sidebar;
     padding: 20px;
+    color: whitesmoke;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 24px;
+
+
+    grid-area: sidebar;
+}
+
+#sidebar a{
+    text-decoration: none;
+    color: whitesmoke;
+
+    display: flex;
+    align-items: center;
+}
+
+ul{
+    list-style: none;
+}
+
+#sidebar img{
+    padding-right: 10px;
+}
+
+#sidebarHeader{
+}
+
+#sidebarHeader p{
+    display: flex;
+    align-items: center;
+}
+
+#sidebarLinks, #sidebarSettings{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 5px;
 }
 
 #header{
     background-color: var(--header-bg-color);
-    padding: 20px;
+    padding: 20px 50px;
 
     grid-area: header;
 
@@ -38,16 +83,47 @@ body{
     align-items: center;
 }
 
+.headerSearch input{
+    width: 400px;
+    height: 25px;
+  
+    background: linear-gradient(#fff, #fff) padding-box,
+        linear-gradient(45deg, var(--accent-1), var(--accent-2)) border-box;
+    border-radius: 50px;
+    border: 4px solid transparent; 
+}
+
 .headerNotif{
     display: flex;
     justify-content: end;
     align-items: center;
+    gap: 15px;
+}
+
+#name{
+    font-size: 20px;
 }
 
 .user{
     display: flex;
     justify-content: start;
     align-items: center;
+    gap: 15px;
+}
+
+.user img{
+    height: 50px;
+}
+
+#hiThere{
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+#userName{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0;
 }
 
 .buttons{
@@ -57,33 +133,76 @@ body{
     gap: 20px;
 }
 
+button{
+    background-image: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+    padding: 8px;
+    width: 80px;
+    border-radius: 10px;
+    border: none;
+    color: whitesmoke;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+button:hover{
+    box-shadow:  0px 15px 15px -11px rgba(0,0,0,0.72);
+}
+
 #mainContent{
     background-color: var(--content-bg-color);
     grid-area: mainContent;
     padding: 20px;
 
     display: grid;
-    grid-template: 1fr 1fr / 1fr min(300px, 20%);
+    grid-template: 1fr 1fr / 3fr 1fr;
     grid-template-areas: 
         "projects announcements"
         "projects trending";
+    grid-gap: 30px;
 }
 
 #projects{
     grid-area: projects;
 }
 
+
+
+#projectsContainer{
+    padding: 10px;
+    padding-left: 0;
+
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+    gap: 20px;
+}
+
+.project{
+    background-color: var(--content-container-bg-color);
+    border-radius: 15px;
+    padding: 10px;
+    padding-top: 0;
+    border-left: 8px solid var(--accent-1);
+    max-width: 400px;
+}
+
+.projectIcons{
+    text-align: end;
+}
+
 #announcements{
     grid-area: announcements;
 }
 
-#trending{
-    grid-area: trending;
+#annoucementsContainer, #trendingContainer{
+    background-color: var(--content-container-bg-color);
+    border-radius: 15px;
+    padding: 10px;
+    border-left: 8px solid var(--accent-2);
+    margin-right: 30px;
 }
 
-#projectsContainer{
-    display: grid;
-    grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+#trending{
+    grid-area: trending;
 }
 
 .trendingProfiles{
