@@ -1,0 +1,92 @@
+:root{
+    --header-bg-color: rgb(218, 238, 214);
+    --sidebar-bg-color: rgb(114, 114, 235);
+    --content-bg-color: rgb(145, 145, 211);
+}
+
+body{
+    margin: 0;
+    height: 100vh;
+    width: 100vW;
+
+    display: grid;
+    grid-template: min(200px, 20%) 1fr / min(300px, 20%) 1fr;
+    grid-template-areas: 
+        "sidebar header"
+        "sidebar mainContent";
+}
+
+#sidebar{
+    background-color:  var(--sidebar-bg-color);
+    grid-area: sidebar;
+    padding: 20px;
+}
+
+#header{
+    background-color: var(--header-bg-color);
+    padding: 20px;
+
+    grid-area: header;
+
+    display: grid;
+    grid-template: 1fr 2fr / 1.5fr 1fr;
+}
+
+.headerSearch{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.headerNotif{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.user{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.buttons{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
+}
+
+#mainContent{
+    background-color: var(--content-bg-color);
+    grid-area: mainContent;
+    padding: 20px;
+
+    display: grid;
+    grid-template: 1fr 1fr / 1fr min(300px, 20%);
+    grid-template-areas: 
+        "projects announcements"
+        "projects trending";
+}
+
+#projects{
+    grid-area: projects;
+}
+
+#announcements{
+    grid-area: announcements;
+}
+
+#trending{
+    grid-area: trending;
+}
+
+#projectsContainer{
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+}
+
+.trendingProfiles{
+    display: flex;
+    align-items: center;
+}
